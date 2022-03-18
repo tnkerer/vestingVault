@@ -1,3 +1,13 @@
+# 🧭 Table of contents
+
+- [🧭 Table of contents](#-table-of-contents)
+- [🚀 Quick Start](#-quick-start)
+- [🪙 Vesting Vault](#-vesting-vault)
+- - [Add Token Grant](#add-token-grant)
+  - [Revoke Token Grant](#revoke-token-grant)
+   - [Claim Vested Tokens](#claim-vested-tokens)
+- [🧆 Navigating Truffle](#-navigating-truffle)
+
 # 🚀 Quick Start
 
 ✅ Clone or fork `vestingVault`:
@@ -18,6 +28,56 @@ yarn install
 ```sh
 npm install -g truffle
 ```
+# 🪙 Vesting Vault
+
+The vesting vault follows a `Graded Vesting` schedule that gradually grants ownership of a determined `ERC20 Token` to a grantee. For simplicity, each VestingVault instance can only grant one `ERC20 Token` that is defined on deployment as an argument to the Smart Constract `constructor`:
+
+```jsx
+   ERC20 public token;
+   
+   constructor(ERC20 _token) {
+        require(address(_token) != address(0));
+        token = _token;
+    }
+```
+
+### Add Token Grant
+
+There are four important variables that defines how the vesting unlocking will play out: Grantee address, Grant amount, Vesting Cliff and Vesting Duration. These are the arguments used to create a new grant:
+
+```jsx
+   function addTokenGrant(
+        address _recipient,
+        uint256 _amount,
+        uint16 _vestingDurationInDays,
+        uint16 _vestingCliffInDays    
+    )
+```
+
+The arguments  `address _recipient`, `uint256 _amount` and `_vestingDurationInDays` are pretty straight forward. However `_vestingCliffInDays` can cause some confusion. Lets have a look at the picture below:
+
+![](https://github.com/menezesphill/vestingVault/blob/master/img/vesting-expl.png)
+
+The Cliff defines when the grant starts to unlock, in our case, this cliff is given in days. `_vestingCliffInDays` can be Zero, in this case, vesting starts when the grant is created and there is no cooldown time before grantees can start claiming.
+
+### Revoke Token Grant
+
+If the vesting authority (contract owner) decides to cancel vesting before `_vestingDurationInDays` ends. The grant can be revoked by using:
+
+```jsx
+function revokeTokenGrant(address _recipient)
+```
+
+The remaining locked `ERC20 Tokens` are returned to the contract owner and any unlocked token is sent to `address _recipient`. 
+
+### Claim Vested Tokens
+
+If the address calling this method (i.e. `msg.sender` ) is a grantee recipient, unlocked balanced is sent to `msg.sender`.
+
+```jsx
+function claimVestedToken()
+```
+ 
 
 # 🧆 Navigating Truffle
 
