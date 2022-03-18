@@ -1,16 +1,11 @@
-//import web3Utils from "web3-utils";
-
 const VestingVault = artifacts.require("VestingVault");
 const ERC20 = artifacts.require("ERC20");
 const utils = require("./helpers/utils");
 const time = require("./helpers/test-helper");
-//import { currentBlockTime, forwardTime, expectEvent, checkErrorRevert } from "./helpers/test-helper";
 
 
 contract("VestingVault", (accounts) => {
 
-    //const SECONDS_PER_MONTH = 2628000;
-    //const SECONDS_PER_DAY = 86400;
 
     let [alice, bob, carol] = accounts;
     let contractInstance;
@@ -22,7 +17,6 @@ context("No time constraint test list:", async () => {
 
     beforeEach(async () => {
         tokenInstance = await ERC20.new("Token", "TKN");
-        //notVestabletoken = await ERC20.new("NotToken", "NTKN");
         contractInstance = await VestingVault.new(tokenInstance.address);
         mintAmount = 10000;
         await tokenInstance.mintToOwner(mintAmount, {from: alice});
@@ -75,7 +69,6 @@ context("Time constrained test list:", async () => {
 
     beforeEach(async () => {
         tokenInstance = await ERC20.new("Token", "TKN");
-        //notVestabletoken = await ERC20.new("NotToken", "NTKN");
         contractInstance = await VestingVault.new(tokenInstance.address);
         mintAmount = 10000;
         await tokenInstance.mintToOwner(mintAmount, {from: alice});
@@ -94,24 +87,6 @@ context("Time constrained test list:", async () => {
         const grantedAmount = await tokenInstance.balanceOf(alice);
 
         assert.equal(returnedAmount.toString(), grantedAmount.toString());
-
-    })
-
-    xit("Time & Grant amount calculus.", async () => {
-        await tokenInstance.approve(contractInstance.address, mintAmount, {from: alice});
-        await contractInstance.addTokenGrant(bob, mintAmount, 2, 1, {from: alice});
-        
-        await time.increase(time.duration.days(1.5));
-
-        const data = await contractInstance.calculateGrantClaim(bob, {from: alice});
-        
-        const daysVested = data[0].toString();
-        const amountVested = data[1].toString();
-        console.log(`${daysVested} & ${amountVested}`);
-
-        await utils.shouldThrow(
-            contractInstance.addTokenGrant(bob, mintAmount, 2, 1, {from: alice})
-            );
 
     })
 
