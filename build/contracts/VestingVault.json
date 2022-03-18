@@ -99,7 +99,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -119,7 +120,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -199,7 +201,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -223,7 +226,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -236,7 +240,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.7.4+commit.3f05b770\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract ERC20\",\"name\":\"_token\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"}],\"name\":\"GrantAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amountVested\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amountNotVested\",\"type\":\"uint256\"}],\"name\":\"GrantRevoked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amountClaimed\",\"type\":\"uint256\"}],\"name\":\"GrantTokensClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"_vestingDurationInDays\",\"type\":\"uint16\"},{\"internalType\":\"uint16\",\"name\":\"_vestingCliffInDays\",\"type\":\"uint16\"}],\"name\":\"addTokenGrant\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_recipient\",\"type\":\"address\"}],\"name\":\"calculateGrantClaim\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"claimVestedTokens\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"fetchGrantData\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_recipient\",\"type\":\"address\"}],\"name\":\"getGrantAmount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_recipient\",\"type\":\"address\"}],\"name\":\"revokeTokenGrant\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"token\",\"outputs\":[{\"internalType\":\"contract ERC20\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"revokeTokenGrant(address)\":{\"params\":{\"_recipient\":\"address of the token grant recipient\"}},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"calculateGrantClaim(address)\":{\"notice\":\"Calculate the vested and unclaimed months and tokens available for `_grantId` to claim Due to rounding errors once grant duration is reached, returns the entire left grant amount Returns (0, 0) if cliff has not been reached\"},\"claimVestedTokens()\":{\"notice\":\"Allows a grant recipient to claim their vested tokens. Errors if no tokens have vested\"},\"revokeTokenGrant(address)\":{\"notice\":\"Terminate token grant transferring all vested tokens to the `_recipient` and returning all non-vested tokens to the contract owner Secured to the contract owner only\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/VestingVault.sol\":\"VestingVault\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Context.sol\":{\"keccak256\":\"0x1a1e6a1efcdca26d6b070fb109077412cd601a741ae657a1fd4ee59a5814d0fd\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://871f8a47850d37718e50575a85235e9f3e95d56b0fb93c3acf3b568d797196f1\",\"dweb:/ipfs/QmeiqSPx96vo3X8PyPrhT8u3w61WS1ksj3RjqwPx1ysECS\"]},\"project:/contracts/ERC20.sol\":{\"keccak256\":\"0x537cdf9b99fcdb360d742f90767ed9e58f62f80da3f73f120f0a4a9d306acbc3\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f3057c5445ebb61701555338343290d4b2629d2ba3581bef1c81855e79309d90\",\"dweb:/ipfs/QmYYhmdh6noAdcVtp574An2ybH1JUNiUDGy2FeKQTDFBLM\"]},\"project:/contracts/IERC20.sol\":{\"keccak256\":\"0x5f02220344881ce43204ae4a6281145a67bc52c2bb1290a791857df3d19d78f5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://24427744bd3e6cb73c17010119af12a318289c0253a4d9acb8576c9fb3797b08\",\"dweb:/ipfs/QmTLDqpKRBuxGxRAmjgXt9AkXyACW3MtKzi7PYjm5iMfGC\"]},\"project:/contracts/Ownable.sol\":{\"keccak256\":\"0x19dd71f8669152dbbafda9ff718dfeef86146144d3116cebf30b632dcec561e0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9621798e7aefcc1c461d07c78d0345385d595dfb08f68ef79f3e4203502e5b99\",\"dweb:/ipfs/QmaXWof3AQnHJVYCRoRYPceHUh37RGXt65QCKjeVkMeYw1\"]},\"project:/contracts/SafeMath.sol\":{\"keccak256\":\"0x3b21f2c8d626de3b9925ae33e972d8bf5c8b1bffb3f4ee94daeed7d0679036e6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7f8d45329fecbf0836ad7543330c3ecd0f8d0ffa42d4016278c3eb2215fdcdfe\",\"dweb:/ipfs/QmXWLT7GcnHtA5NiD6MFi2CV3EWJY4wv5mLNnypqYDrxL3\"]},\"project:/contracts/VestingVault.sol\":{\"keccak256\":\"0xeed9942c4ef5c46cb627c07e1d49a1e46501d9be56866d51a0825391d447dea6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://79407587f09d3425009b8f5379b3b8fa453311260c50d21963755f7937148c70\",\"dweb:/ipfs/QmaMGzWkDr9CSyePkT2PyB1DBAA4fn6Z6ZFjYkFTGcnsmE\"]}},\"version\":1}",
@@ -14254,9 +14259,17 @@
     "name": "solc",
     "version": "0.7.4+commit.3f05b770.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x762e053b541fCF4965146792C171A5D38bbDC882",
+      "transactionHash": "0x50336c8bb778276c83929bf0e6c46a3dee33ce3215fd997925e3c71509cf4c6e"
+    }
+  },
   "schemaVersion": "3.4.5",
-  "updatedAt": "2022-03-17T23:35:57.535Z",
+  "updatedAt": "2022-03-18T17:03:17.575Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {
