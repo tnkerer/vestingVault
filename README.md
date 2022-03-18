@@ -56,7 +56,9 @@ There are four important variables that defines how the vesting unlocking will p
 
 The arguments  `address _recipient`, `uint256 _amount` and `_vestingDurationInDays` are pretty straight forward. However `_vestingCliffInDays` can cause some confusion. Lets have a look at the picture below:
 
-![](https://github.com/menezesphill/vestingVault/blob/master/img/vesting-expl.png)
+<p align="center">
+  <img src="https://github.com/menezesphill/vestingVault/blob/master/img/vesting-expl.png?raw=true" alt="Vesting Curve"/>
+</p>
 
 The Cliff defines when the grant starts to unlock, in our case, this cliff is given in days. `_vestingCliffInDays` can be Zero, in this case, vesting starts when the grant is created and there is no cooldown time before grantees can start claiming.
 
