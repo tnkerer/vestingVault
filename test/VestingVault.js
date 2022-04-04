@@ -1,7 +1,8 @@
 const VestingVault = artifacts.require("VestingVault");
 const ERC20 = artifacts.require("ERC20");
 const utils = require("./helpers/utils");
-const time = require("./helpers/test-helper");
+const time = require("./helpers/time");
+const { assert } = require("chai");
 
 
 contract("VestingVault", (accounts) => {
@@ -89,7 +90,7 @@ context("Time constrained test list:", async () => {
         assert.equal(returnedAmount.toString(), grantedAmount.toString());
 
     })
-
+    
 })
 
 })
