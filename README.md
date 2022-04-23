@@ -83,7 +83,7 @@ function claimVestedToken()
 
 # 🧆 Navigating Truffle
 
-✅ In case of making any modifications within .sol files, you can run:
+✅ In case of making any changes to .sol files, you can run:
 
 ```sh
 truffle compile
