@@ -101,7 +101,7 @@ Testing cases are not as extensive as we would like. if you want to contribute c
 
 ✅ Deploying contracts to local testnet:
 
-There is a portion of the community that might be tempted to use [Remix](https://remix.ethereum.org/) but we are not taking shortcuts. We would like to use a more "Orthodox" approach, if you will. For simplicity we will use Ganache GUI, which can be downloaded here: https://trufflesuite.com/ganache/
+There is a portion of the community that might be tempted to use [Remix](https://remix.ethereum.org/) but we are not taking shortcuts. We would like to use a more "Orthodox" approach, if you will. For simplicity we will use Ganache GUI. It can be downloaded here: https://trufflesuite.com/ganache/
 
 Upon starting Ganache, go ahead and `QUICKSTART` a new network, you will see a window that looks like this:
 
