@@ -2,7 +2,7 @@
 
 - [🧭 Table of contents](#-table-of-contents)
 - [🚀 Quick Start](#-quick-start)
-- [🪙 Vesting Vault](#-vesting-vault)
+- [🔒 Vesting Vault](#-vesting-vault)
 - - [Add Token Grant](#add-token-grant)
   - [Revoke Token Grant](#revoke-token-grant)
    - [Claim Vested Tokens](#claim-vested-tokens)
@@ -28,7 +28,7 @@ yarn install
 ```sh
 npm install -g truffle
 ```
-# 🪙 Vesting Vault
+# 🔒 Vesting Vault
 
 The vesting vault follows a `Graded Vesting` schedule that gradually grants ownership of a determined `ERC20 Token` to a grantee. For simplicity, each VestingVault instance can only grant one `ERC20 Token` that is defined on deployment as an argument to the Smart Constract `constructor`:
 
